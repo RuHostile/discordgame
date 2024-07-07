@@ -20,24 +20,10 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-
-function App() {
-
-  const [user] = useAuthState(auth);
-
-  return (
-    <div className="App">
-      <header>
-        <h1>Chat ChatRoom</h1>
-        <SignOut />
-      </header>
-
-      <section>
-        {user ? <ChatRoom /> : <SignIn />}
-      </section>
-
-    </div>
-  );
+function SignOut() {
+  return auth.currentUser && (
+    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+  )
 }
 
 function SignIn() {
@@ -54,12 +40,6 @@ function SignIn() {
     </>
   )
 
-}
-
-function SignOut() {
-  return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
-  )
 }
 
 function ChatRoom() {
@@ -108,17 +88,37 @@ function ChatRoom() {
 
 function ChatMessage(props) {
   const { text, uid, photoURL } = props.message;
+  const placeholderphoto = '../public/pfp-pic.png';
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
   return (
     <>
       <div className={`message ${messageClass}`}>
-        <img src={photoURL || 'https://dreamyguy.github.io/react-emojis/react-emojis/img/robot.png'} />
+        <img src={photoURL || placeholderphoto}/>
         <p>{text}</p>
       </div>
     </>
   )
+}
+
+function App() {
+
+  const [user] = useAuthState(auth);
+
+  return (
+    <div className="App">
+      <header>
+        <h1>Discord Gatcha Game</h1>
+        <SignOut />
+      </header>
+
+      <section>
+        {user ? <ChatRoom /> : <SignIn />}
+      </section>
+
+    </div>
+  );
 }
 
 export default App;
