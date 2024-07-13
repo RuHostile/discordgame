@@ -4,11 +4,8 @@ import AuthFirebase from '../Helpers/AuthFirebase';
 import ChatMessage from './ChatMessage';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-
 const auth = AuthFirebase();
 const firestore = firebase.firestore();
-
-
 
 function ChatRoom() {
    const dummy = useRef();
