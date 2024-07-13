@@ -7,11 +7,10 @@ function ChatMessage(props) {
    const { text, uid, photoURL } = props.message;
    const placeholderphoto = '../public/pfp-pic.png';
  
-   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
- 
+   const messageClassName = uid === auth.currentUser.uid ? 'sent' : 'received';
    return (
      <>
-       <div className={`message ${messageClass}`}>
+       <div className={`message ${messageClassName}`}>
          <img src={photoURL || placeholderphoto}/>
          <p>{text}</p>
        </div>

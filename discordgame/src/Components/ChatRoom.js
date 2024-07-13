@@ -9,8 +9,8 @@ const firestore = firebase.firestore();
 
 function ChatRoom() {
    const dummy = useRef();
-   const messagesRef = firestore.collection('messages');
-   const query = messagesRef.orderBy('createdAt').limit(25);
+   const messagesCollection = firestore.collection('messages');
+   const query = messagesCollection.orderBy('createdAt').limit(25);
  
    const [messages] = useCollectionData(query, { idField: 'id' });
  
@@ -22,7 +22,7 @@ function ChatRoom() {
  
      const { uid, photoURL } = auth.currentUser;
  
-     await messagesRef.add({
+     await messagesCollection.add({
        text: formValue,
        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
        uid,

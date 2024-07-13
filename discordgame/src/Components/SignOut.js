@@ -6,7 +6,7 @@ function SignOut() {
    
 
    return auth.currentUser && (
-      <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+      <li as="li" className="sign-out" onClick={() => auth.signOut()}>Sign Out</li>
    )
 }
 

@@ -33,6 +33,32 @@ body {
   background-color: rgb(40, 37, 53);
 }
 
+.App h1 {
+  color: CanvasText;
+  color-scheme: light dark;
+}
+
+.dropdown-menu {
+
+  box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
+  transition: all linear 0.3s;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: unset;
+  margin:unset;
+}
+.dropdown-menu li {
+  padding: 14px;
+  transition: all linear 0.3s;
+}
+.dropdown-menu li:hover {
+  background: gray;
+  cursor: pointer;
+  color: #fff;
+}
+
 main {
   padding: 10px;
   height: 80vh;
@@ -106,9 +132,6 @@ button:disabled {
   max-width: 400px;
   margin: 0 auto;
 }
-
-
-
 
 ul, li {
   text-align: left;
